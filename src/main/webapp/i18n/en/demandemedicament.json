@@ -1,0 +1,26 @@
+{
+    "avancementApp": {
+        "demandemedicament" : {
+            "home": {
+                "title": "Demandemedicaments",
+                "createLabel": "Create a new Demandemedicament",
+                "createOrEditLabel": "Create or edit a Demandemedicament",
+                "search": "Search for Demandemedicament"
+            },
+            "created": "A new Demandemedicament is created with identifier {{ param }}",
+            "updated": "A Demandemedicament is updated with identifier {{ param }}",
+            "deleted": "A Demandemedicament is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Demandemedicament {{ id }}?"
+            },
+            "detail": {
+                "title": "Demandemedicament"
+            },
+            "date": "Date",
+            "time": "Time",
+            "type": "Type",
+            "quantity": "Quantity",
+            "etat": "Etat"
+        }
+    }
+}

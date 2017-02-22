@@ -1,0 +1,26 @@
+{
+    "avancementApp": {
+        "demandemedicament" : {
+            "home": {
+                "title": "Demandemedicaments",
+                "createLabel": "Créer un nouveau Demandemedicament",
+                "createOrEditLabel": "Créer ou éditer un Demandemedicament",
+                "search": "Recherche pour Demandemedicament"
+            },
+            "created": "Un nouveau Demandemedicament a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Demandemedicament avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Demandemedicament avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Demandemedicament {{ id }} ?"
+            },
+            "detail": {
+                "title": "Demandemedicament"
+            },
+            "date": "Date",
+            "time": "Time",
+            "type": "Type",
+            "quantity": "Quantity",
+            "etat": "Etat"
+        }
+    }
+}

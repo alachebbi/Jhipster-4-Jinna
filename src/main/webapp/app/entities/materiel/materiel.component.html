@@ -1,0 +1,71 @@
+<div>
+    <h2><span jhiTranslate="avancementApp.materiel.home.title">Materiels</span>
+        <button class="btn btn-primary float-xs-right create-materiel" [routerLink]="['/', { outlets: { popup: ['materiel-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avancementApp.materiel.home.createLabel">
+            Create new Materiel
+            </span>
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="materiels">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nom"><span jhiTranslate="avancementApp.materiel.nom">Nom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="type"><span jhiTranslate="avancementApp.materiel.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="quantity"><span jhiTranslate="avancementApp.materiel.quantity">Quantity</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ref"><span jhiTranslate="avancementApp.materiel.ref">Ref</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateproduction"><span jhiTranslate="avancementApp.materiel.dateproduction">Dateproduction</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="datevalidite"><span jhiTranslate="avancementApp.materiel.datevalidite">Datevalidite</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let materiel of materiels ;trackBy: trackId">
+                <td><a [routerLink]="['../materiel', materiel.id ]">{{materiel.id}}</a></td>
+                <td>{{materiel.nom}}</td>
+                <td>{{materiel.type}}</td>
+                <td>{{materiel.quantity}}</td>
+                <td>{{materiel.ref}}</td>
+                <td>{{materiel.dateproduction | date:'mediumDate'}}</td>
+                <td>{{materiel.datevalidite | date:'mediumDate'}}</td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../materiel', materiel.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'materiel/'+ materiel.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'materiel/'+ materiel.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="materiels && materiels.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>

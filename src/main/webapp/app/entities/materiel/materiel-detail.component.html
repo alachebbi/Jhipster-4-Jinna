@@ -1,0 +1,45 @@
+
+<div *ngIf="materiel">
+    <h2><span jhiTranslate="avancementApp.materiel.detail.title">Materiel</span> {{materiel.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.materiel.nom">Nom</span></dt>
+        <dd>
+            <span>{{materiel.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.materiel.type">Type</span></dt>
+        <dd>
+            <span>{{materiel.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.materiel.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{materiel.quantity}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.materiel.ref">Ref</span></dt>
+        <dd>
+            <span>{{materiel.ref}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.materiel.dateproduction">Dateproduction</span></dt>
+        <dd>
+            <span>{{materiel.dateproduction | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.materiel.datevalidite">Datevalidite</span></dt>
+        <dd>
+            <span>{{materiel.datevalidite | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'materiel/'+ materiel.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

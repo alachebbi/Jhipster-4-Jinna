@@ -1,0 +1,23 @@
+{
+    "avancementApp": {
+        "servicemedical" : {
+            "home": {
+                "title": "Servicemedicals",
+                "createLabel": "Créer un nouveau Servicemedical",
+                "createOrEditLabel": "Créer ou éditer un Servicemedical",
+                "search": "Recherche pour Servicemedical"
+            },
+            "created": "Un nouveau Servicemedical a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Servicemedical avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Servicemedical avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Servicemedical {{ id }} ?"
+            },
+            "detail": {
+                "title": "Servicemedical"
+            },
+            "nom": "Nom",
+            "image": "Image"
+        }
+    }
+}

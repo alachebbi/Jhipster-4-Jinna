@@ -1,0 +1,27 @@
+{
+    "avancementApp": {
+        "materiel" : {
+            "home": {
+                "title": "Materiels",
+                "createLabel": "Créer un nouveau Materiel",
+                "createOrEditLabel": "Créer ou éditer un Materiel",
+                "search": "Recherche pour Materiel"
+            },
+            "created": "Un nouveau Materiel a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Materiel avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Materiel avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Materiel {{ id }} ?"
+            },
+            "detail": {
+                "title": "Materiel"
+            },
+            "nom": "Nom",
+            "type": "Type",
+            "quantity": "Quantity",
+            "ref": "Ref",
+            "dateproduction": "Dateproduction",
+            "datevalidite": "Datevalidite"
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "prenom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "datenaissance",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "antecedents",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resultatdudernierexamen",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notesprofitionnelsparamedicaux",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comptesrendus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recommandations",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "perscriptionmedicamenteuses",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "groupesanguin",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "fichemedicale",
+    "pagination": "pagination"
+}

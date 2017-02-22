@@ -1,0 +1,70 @@
+<div>
+    <h2><span jhiTranslate="avancementApp.servicemedical.home.title">Servicemedicals</span>
+        <button class="btn btn-primary float-xs-right create-servicemedical" [routerLink]="['/', { outlets: { popup: ['servicemedical-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avancementApp.servicemedical.home.createLabel">
+            Create new Servicemedical
+            </span>
+        </button></h2>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="servicemedicals">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+
+            <th jhiSortBy="nom"><span jhiTranslate="avancementApp.servicemedical.nom">Nom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="image"><span jhiTranslate="avancementApp.servicemedical.image">Image</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let servicemedical of servicemedicals ;trackBy: trackId">
+
+                <td>{{servicemedical.nom}}</td>
+                <td>
+                    <a *ngIf="servicemedical.image" (click)="openFile(servicemedical.imageContentType, servicemedical.image)">
+                        <img [src]="'data:' + servicemedical.imageContentType + ';base64,' + servicemedical.image" style="max-height: 30px; max-width: 50px;" alt="servicemedical image"/>
+                    </a>
+
+                </td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../servicemedical', servicemedical.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'servicemedical/'+ servicemedical.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'servicemedical/'+ servicemedical.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="servicemedicals && servicemedicals.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>

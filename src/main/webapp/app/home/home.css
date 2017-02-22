@@ -1,0 +1,34 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.hipster {
+    display: inline-block;
+    width: 347px;
+    height: 497px;
+    background: url("../../content/images/med.png") no-repeat center top;
+    background-size: contain;
+}
+.lead{color : #014c8c;}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+    .hipster {
+        background: url("../../content/images/hipster2x.png") no-repeat center top;
+        background-size: contain;
+    }
+}
+p {padding-top: 30px;
+    padding-left: 374px}
+h3, h4 {
+    padding-left: 260px;
+    font-family:  "Arial Black" ;
+    color :  #8c0f15   ;
+    padding-top: 30px;
+}

@@ -1,0 +1,61 @@
+
+<div *ngIf="fichemedicale">
+    <h2><span jhiTranslate="avancementApp.fichemedicale.detail.title">Fiche medicale</span> </h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.fichemedicale.nom">Nom</span></dt>
+        <dd>
+            <span>{{fichemedicale.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichemedicale.prenom">Prenom</span></dt>
+        <dd>
+            <span>{{fichemedicale.prenom}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichemedicale.datenaissance">Date de naissance</span></dt>
+        <dd>
+            <span>{{fichemedicale.datenaissance | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichemedicale.antecedents">Antecedents</span></dt>
+        <dd>
+            <span>{{fichemedicale.antecedents}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichemedicale.resultatdudernierexamen">Resultat du dernierexamen</span></dt>
+        <dd>
+            <span>{{fichemedicale.resultatdudernierexamen}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichemedicale.notesprofitionnelsparamedicaux">Notes profitionnels paramedicaux</span></dt>
+        <dd>
+            <span>{{fichemedicale.notesprofitionnelsparamedicaux}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichemedicale.comptesrendus">Comptes rendus</span></dt>
+        <dd>
+            <span>{{fichemedicale.comptesrendus}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichemedicale.recommandations">Recommandations</span></dt>
+        <dd>
+            <span>{{fichemedicale.recommandations}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichemedicale.perscriptionmedicamenteuses">Perscriptions medicamenteuses</span></dt>
+        <dd>
+            <span>{{fichemedicale.perscriptionmedicamenteuses}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichemedicale.groupesanguin">Groupe sanguin</span></dt>
+        <dd>
+            <span>{{fichemedicale.groupesanguin}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'fichemedicale/'+ fichemedicale.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

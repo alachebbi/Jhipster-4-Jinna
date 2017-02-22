@@ -1,0 +1,48 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myServicemedicalLabel" jhiTranslate="avancementApp.servicemedical.home.createOrEditLabel">Create or edit a Servicemedical</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.servicemedical.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="servicemedical.nom"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.servicemedical.image" for="field_image">Image</label>
+            <div>
+                <img [src]="'data:' + servicemedical.imageContentType + ';base64,' + servicemedical.image" style="max-height: 100px;" *ngIf="servicemedical.image" alt="servicemedical image"/>
+                <div *ngIf="servicemedical.image" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{servicemedical.imageContentType}}, {{byteSize(servicemedical.image)}}</span>
+                    <button type="button" (click)="servicemedical.image=null;servicemedical.imageContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, servicemedical, 'image', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="image" id="field_image"
+                [(ngModel)]="servicemedical.image"
+             />
+            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                [(ngModel)]="servicemedical.imageContentType" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

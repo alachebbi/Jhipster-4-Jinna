@@ -1,0 +1,31 @@
+{
+    "avancementApp": {
+        "fichemedicale" : {
+            "home": {
+                "title": "Fichemedicales",
+                "createLabel": "Create a new Fichemedicale",
+                "createOrEditLabel": "Create or edit a Fichemedicale",
+                "search": "Search for Fichemedicale"
+            },
+            "created": "A new Fichemedicale is created with identifier {{ param }}",
+            "updated": "A Fichemedicale is updated with identifier {{ param }}",
+            "deleted": "A Fichemedicale is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Fichemedicale {{ id }}?"
+            },
+            "detail": {
+                "title": "Fichemedicale"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "datenaissance": "Datenaissance",
+            "antecedents": "Antecedents",
+            "resultatdudernierexamen": "Resultatdudernierexamen",
+            "notesprofitionnelsparamedicaux": "Notesprofitionnelsparamedicaux",
+            "comptesrendus": "Comptesrendus",
+            "recommandations": "Recommandations",
+            "perscriptionmedicamenteuses": "Perscriptionmedicamenteuses",
+            "groupesanguin": "Groupesanguin"
+        }
+    }
+}

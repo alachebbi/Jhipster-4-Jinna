@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "prenom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cin",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "datedenaissance",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "numsecsociale",
+            "fieldType": "Long"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "patient",
+    "pagination": "pagination"
+}

@@ -1,0 +1,54 @@
+
+<div *ngIf="medecin">
+    <h2><span jhiTranslate="avancementApp.medecin.detail.title">Medecin</span> {{medecin.nom}} {{medecin.prenom}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.medecin.nom">Nom</span></dt>
+        <dd>
+            <span>{{medecin.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.medecin.prenom">Prenom</span></dt>
+        <dd>
+            <span>{{medecin.prenom}}</span>
+        </dd>
+        <dt>Datenaissance</dt>
+        <dd>
+            <span>{{medecin.datenaissance | date:'mediumDate'}}</span>
+        </dd>
+
+        <dt>Specialite</dt>
+        <dd>
+            <span>{{medecin.specialite}}</span>
+        </dd>
+        <dt>Photo</dt>
+        <dd>
+            <div *ngIf="medecin.photo">
+                <a (click)="openFile(medecin.photoContentType, medecin.photo)">
+                    <img [src]="'data:' + medecin.photoContentType + ';base64,' + medecin.photo" style="max-width: 30px;max-height: 50px;" alt="medecin image"/>
+                </a>
+
+            </div>
+        </dd>
+        <dt>Login</dt>
+        <dd>
+            <span>{{medecin.login}}</span>
+        </dd>
+        <dt>Mot de passe</dt>
+        <dd>
+            <span>{{medecin.motdepasse}}</span>
+        </dd>
+    </dl>
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'medecin/'+ medecin.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

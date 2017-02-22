@@ -1,0 +1,26 @@
+{
+    "avancementApp": {
+        "demandemateriel" : {
+            "home": {
+                "title": "Demandemateriels",
+                "createLabel": "Créer un nouveau Demandemateriel",
+                "createOrEditLabel": "Créer ou éditer un Demandemateriel",
+                "search": "Recherche pour Demandemateriel"
+            },
+            "created": "Un nouveau Demandemateriel a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Demandemateriel avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Demandemateriel avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Demandemateriel {{ id }} ?"
+            },
+            "detail": {
+                "title": "Demandemateriel"
+            },
+            "date": "Date",
+            "time": "Time",
+            "type": "Type",
+            "quantity": "Quantity",
+            "etat": "Etat"
+        }
+    }
+}

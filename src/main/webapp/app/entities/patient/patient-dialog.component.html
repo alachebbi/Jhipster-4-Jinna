@@ -1,0 +1,61 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myPatientLabel" jhiTranslate="avancementApp.patient.home.createOrEditLabel">Create or edit a Patient</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!patient.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="patient.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.patient.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="patient.nom"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.patient.prenom" for="field_prenom">Prenom</label>
+            <input type="text" class="form-control" name="prenom" id="field_prenom"
+                [(ngModel)]="patient.prenom"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.patient.cin" for="field_cin">Cin</label>
+            <input type="number" class="form-control" name="cin" id="field_cin"
+                [(ngModel)]="patient.cin"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.patient.datedenaissance" for="field_datedenaissance">Datedenaissance</label>
+            <div class="input-group">
+                <input id="field_datedenaissance" type="text" class="form-control" name="datedenaissance" ngbDatepicker  #datedenaissanceDp="ngbDatepicker" [(ngModel)]="patient.datedenaissance"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="datedenaissanceDp.open()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.patient.numsecsociale" for="field_numsecsociale">Numsecsociale</label>
+            <input type="number" class="form-control" name="numsecsociale" id="field_numsecsociale"
+                [(ngModel)]="patient.numsecsociale"
+             />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

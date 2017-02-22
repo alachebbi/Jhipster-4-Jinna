@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "ref",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateproduction",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "datevalidite",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "materiel",
+    "pagination": "pagination"
+}

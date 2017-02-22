@@ -1,0 +1,69 @@
+<div>
+    <h2><span jhiTranslate="avancementApp.demandemedicament.home.title">Demandemedicaments</span>
+        <button class="btn btn-primary float-xs-right create-demandemedicament" [routerLink]="['/', { outlets: { popup: ['demandemedicament-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avancementApp.demandemedicament.home.createLabel">
+            Create new Demandemedicament
+            </span>
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="demandemedicaments">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="date"><span jhiTranslate="avancementApp.demandemedicament.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="time"><span jhiTranslate="avancementApp.demandemedicament.time">Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="type"><span jhiTranslate="avancementApp.demandemedicament.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="quantity"><span jhiTranslate="avancementApp.demandemedicament.quantity">Quantity</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="etat"><span jhiTranslate="avancementApp.demandemedicament.etat">Etat</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let demandemedicament of demandemedicaments ;trackBy: trackId">
+                <td><a [routerLink]="['../demandemedicament', demandemedicament.id ]">{{demandemedicament.id}}</a></td>
+                <td>{{demandemedicament.date | date:'mediumDate'}}</td>
+                <td>{{demandemedicament.time | date:'medium'}}</td>
+                <td>{{demandemedicament.type}}</td>
+                <td>{{demandemedicament.quantity}}</td>
+                <td>{{demandemedicament.etat}}</td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../demandemedicament', demandemedicament.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'demandemedicament/'+ demandemedicament.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'demandemedicament/'+ demandemedicament.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="demandemedicaments && demandemedicaments.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>
