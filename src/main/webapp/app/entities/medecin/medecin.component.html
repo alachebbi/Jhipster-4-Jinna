@@ -8,32 +8,50 @@
         </button></h2>
     <jhi-alert></jhi-alert>
 
+
+
+
+
+
     <div class="container-fluid">
         <div class="row">
         </div>
     </div>
     <br/>
+
+        <label>Filtrer par spécialité: </label>
+        <select   class="form-control" name="specialite" [(ngModel)]="filter">
+
+
+
+
+                <option *ngFor="let medecin of medecins "  >{{medecin.specialite}}</option>
+
+
+
+
+        </select>
+
     <div class="table-responsive" *ngIf="medecins">
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-
-            <th jhiSortBy="nom">Nom<span class="fa fa-sort"></span></th>
-            <th jhiSortBy="prenom">Prenom <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nomcomplet">az<span class="fa fa-sort"></span></th>
             <th jhiSortBy="datenaissance">Date de naissance <span class="fa fa-sort"></span></th>
 
             <th jhiSortBy="specialite">Specialite<span class="fa fa-sort"></span></th>
             <th jhiSortBy="photo">Photo<span class="fa fa-sort"></span></th>
-            <th jhiSortBy="login"> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="serviceid">Service Medical<span class="fa fa-sort"></span></th>
+            <th jhiSortBy="login">Login<span class="fa fa-sort"></span></th>
             <th jhiSortBy="motdepasse">Mot de passe <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let medecin of medecins ;trackBy: trackId">
+            <tr *ngFor="let medecin of medecins | pureFilter:filter:'specialite'">
 
-                <td>{{medecin.nom}}</td>
-                <td>{{medecin.prenom}}</td>
+                <td>{{medecin.az}}</td>
+
                 <td>{{medecin.datenaissance | date:'mediumDate'}}</td>
 
                 <td>{{medecin.specialite}}</td>
@@ -43,6 +61,7 @@
                     </a>
 
                 </td>
+                <td>{{medecin.serviceid}}</td>
                 <td>{{medecin.login}}</td>
                 <td>{{medecin.motdepasse}}</td>
                 <td class="text-xs-right">

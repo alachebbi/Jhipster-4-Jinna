@@ -5,25 +5,32 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
-        <h4 class="modal-title" id="myFichemedicaleLabel" jhiTranslate="avancementApp.fichemedicale.home.createOrEditLabel">Create or edit a Fiche medicale</h4>
+        <h4 class="modal-title" id="myFichemedicaleLabel" jhiTranslate="avancementApp.fichemedicale.home.createOrEditLabel">Create or edit a Fichemedicale</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
 
+
         <div class="form-group">
-            <label>Nom</label>
+            <label class="form-control-label" jhiTranslate="avancementApp.fichemedicale.nom" for="field_nom">Nom : </label>
             <input type="text" class="form-control" name="nom" id="field_nom"
                 [(ngModel)]="fichemedicale.nom"
              />
         </div>
         <div class="form-group">
-            <label>Prenom</label>
+            <label class="form-control-label" jhiTranslate="avancementApp.fichemedicale.prenom" for="field_prenom">Prenom : </label>
             <input type="text" class="form-control" name="prenom" id="field_prenom"
                 [(ngModel)]="fichemedicale.prenom"
              />
         </div>
         <div class="form-group">
-            <label>Date de naissance</label>
+            <label>Medecin traitant :</label>
+            <select class="form-control" name="medid" [(ngModel)]="fichemedicale.medid">
+                <option *ngFor="let medecin of medecins ;trackBy: trackId" [value]="medecin.nom">{{medecin.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_datenaissance">Date de naissance : </label>
             <div class="input-group">
                 <input id="field_datenaissance" type="text" class="form-control" name="datenaissance" ngbDatepicker  #datenaissanceDp="ngbDatepicker" [(ngModel)]="fichemedicale.datenaissance"
                 />
@@ -33,43 +40,38 @@
             </div>
         </div>
         <div class="form-group">
-            <label >Antecedents</label>
+            <label class="form-control-label"  for="field_antecedents">Antécedents : </label>
             <input type="text" class="form-control" name="antecedents" id="field_antecedents"
                 [(ngModel)]="fichemedicale.antecedents"
              />
         </div>
         <div class="form-group">
-            <label>Resultat du dernier examen</label>
+            <label class="form-control-label" for="field_resultatdudernierexamen">Resultat du dernier examen : </label>
             <input type="text" class="form-control" name="resultatdudernierexamen" id="field_resultatdudernierexamen"
                 [(ngModel)]="fichemedicale.resultatdudernierexamen"
              />
         </div>
         <div class="form-group">
-            <label>Notes profitionnels paramedicaux</label>
+            <label class="form-control-label"  for="field_notesprofitionnelsparamedicaux">Notes profitionnels paramedicaux : </label>
             <input type="text" class="form-control" name="notesprofitionnelsparamedicaux" id="field_notesprofitionnelsparamedicaux"
                 [(ngModel)]="fichemedicale.notesprofitionnelsparamedicaux"
              />
         </div>
+
         <div class="form-group">
-            <label>Comptes rendus</label>
-            <input type="text" class="form-control" name="comptesrendus" id="field_comptesrendus"
-                [(ngModel)]="fichemedicale.comptesrendus"
-             />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="avancementApp.fichemedicale.recommandations" for="field_recommandations">Recommandations</label>
+            <label class="form-control-label" jhiTranslate="avancementApp.fichemedicale.recommandations" for="field_recommandations">Récommandations : </label>
             <input type="text" class="form-control" name="recommandations" id="field_recommandations"
                 [(ngModel)]="fichemedicale.recommandations"
              />
         </div>
         <div class="form-group">
-            <label>Perscriptions medicamenteuses</label>
+            <label class="form-control-label"  for="field_perscriptionmedicamenteuses">Perscription medicamenteuses : </label>
             <input type="text" class="form-control" name="perscriptionmedicamenteuses" id="field_perscriptionmedicamenteuses"
                 [(ngModel)]="fichemedicale.perscriptionmedicamenteuses"
              />
         </div>
         <div class="form-group">
-            <label>Groupe sanguin </label>
+            <label>Groupe sanguin : </label>
             <select class="form-control" name="groupesanguin" [(ngModel)]="fichemedicale.groupesanguin">
                 <option >A</option>
                 <option >A -</option>
@@ -80,6 +82,25 @@
                 <option >AB</option>
                 <option >AB -</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label"  for="field_compte">Comptes rendus : </label>
+            <div>
+                <div *ngIf="fichemedicale.compte" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(fichemedicale.compteContentType, fichemedicale.compte)" jhiTranslate="entity.action.open">open</a><br>
+
+                    <button type="button" (click)="fichemedicale.compte=null;fichemedicale.compteContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, fichemedicale, 'compte', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="compte " id="field_compte"
+                [(ngModel)]="fichemedicale.compte"
+             />
+            <input type="hidden" class="form-control" name="compteContentType" id="field_compteContentType"
+                [(ngModel)]="fichemedicale.compteContentType" />
         </div>
 
     </div>

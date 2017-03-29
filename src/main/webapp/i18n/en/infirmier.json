@@ -1,0 +1,26 @@
+{
+    "avancementApp": {
+        "infirmier" : {
+            "home": {
+                "title": "Infirmiers",
+                "createLabel": "Create a new Infirmier",
+                "createOrEditLabel": "Create or edit a Infirmier",
+                "search": "Search for Infirmier"
+            },
+            "created": "A new Infirmier is created with identifier {{ param }}",
+            "updated": "A Infirmier is updated with identifier {{ param }}",
+            "deleted": "A Infirmier is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Infirmier {{ id }}?"
+            },
+            "detail": {
+                "title": "Infirmier"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "age": "Age",
+            "login": "Login",
+            "password": "Password"
+        }
+    }
+}

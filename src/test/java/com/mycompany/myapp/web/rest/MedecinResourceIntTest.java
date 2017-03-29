@@ -60,8 +60,23 @@ public class MedecinResourceIntTest {
     private static final String DEFAULT_LOGIN = "AAAAAAAAAA";
     private static final String UPDATED_LOGIN = "BBBBBBBBBB";
 
+    private static final String DEFAULT_FULL_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_FULL_NAME = "BBBBBBBBBB";
+
     private static final String DEFAULT_MOTDEPASSE = "AAAAAAAAAA";
     private static final String UPDATED_MOTDEPASSE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NUMERO = "AAAAAAAAAA";
+    private static final String UPDATED_NUMERO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NUMR = "AAAAAAAAAA";
+    private static final String UPDATED_NUMR = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NUMER = "AAAAAAAAAA";
+    private static final String UPDATED_NUMER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_AZ = "AAAAAAAAAA";
+    private static final String UPDATED_AZ = "BBBBBBBBBB";
 
     @Autowired
     private MedecinRepository medecinRepository;
@@ -101,7 +116,12 @@ public class MedecinResourceIntTest {
                 .photo(DEFAULT_PHOTO)
                 .photoContentType(DEFAULT_PHOTO_CONTENT_TYPE)
                 .login(DEFAULT_LOGIN)
-                .motdepasse(DEFAULT_MOTDEPASSE);
+                .fullName(DEFAULT_FULL_NAME)
+                .motdepasse(DEFAULT_MOTDEPASSE)
+                .numero(DEFAULT_NUMERO)
+                .numr(DEFAULT_NUMR)
+                .numer(DEFAULT_NUMER)
+                .az(DEFAULT_AZ);
         return medecin;
     }
 
@@ -134,7 +154,12 @@ public class MedecinResourceIntTest {
         assertThat(testMedecin.getPhoto()).isEqualTo(DEFAULT_PHOTO);
         assertThat(testMedecin.getPhotoContentType()).isEqualTo(DEFAULT_PHOTO_CONTENT_TYPE);
         assertThat(testMedecin.getLogin()).isEqualTo(DEFAULT_LOGIN);
+        assertThat(testMedecin.getFullName()).isEqualTo(DEFAULT_FULL_NAME);
         assertThat(testMedecin.getMotdepasse()).isEqualTo(DEFAULT_MOTDEPASSE);
+        assertThat(testMedecin.getNumero()).isEqualTo(DEFAULT_NUMERO);
+        assertThat(testMedecin.getNumr()).isEqualTo(DEFAULT_NUMR);
+        assertThat(testMedecin.getNumer()).isEqualTo(DEFAULT_NUMER);
+        assertThat(testMedecin.getAz()).isEqualTo(DEFAULT_AZ);
     }
 
     @Test
@@ -174,7 +199,12 @@ public class MedecinResourceIntTest {
             .andExpect(jsonPath("$.[*].photoContentType").value(hasItem(DEFAULT_PHOTO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].photo").value(hasItem(Base64Utils.encodeToString(DEFAULT_PHOTO))))
             .andExpect(jsonPath("$.[*].login").value(hasItem(DEFAULT_LOGIN.toString())))
-            .andExpect(jsonPath("$.[*].motdepasse").value(hasItem(DEFAULT_MOTDEPASSE.toString())));
+            .andExpect(jsonPath("$.[*].fullName").value(hasItem(DEFAULT_FULL_NAME.toString())))
+            .andExpect(jsonPath("$.[*].motdepasse").value(hasItem(DEFAULT_MOTDEPASSE.toString())))
+            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO.toString())))
+            .andExpect(jsonPath("$.[*].numr").value(hasItem(DEFAULT_NUMR.toString())))
+            .andExpect(jsonPath("$.[*].numer").value(hasItem(DEFAULT_NUMER.toString())))
+            .andExpect(jsonPath("$.[*].az").value(hasItem(DEFAULT_AZ.toString())));
     }
 
     @Test
@@ -195,7 +225,12 @@ public class MedecinResourceIntTest {
             .andExpect(jsonPath("$.photoContentType").value(DEFAULT_PHOTO_CONTENT_TYPE))
             .andExpect(jsonPath("$.photo").value(Base64Utils.encodeToString(DEFAULT_PHOTO)))
             .andExpect(jsonPath("$.login").value(DEFAULT_LOGIN.toString()))
-            .andExpect(jsonPath("$.motdepasse").value(DEFAULT_MOTDEPASSE.toString()));
+            .andExpect(jsonPath("$.fullName").value(DEFAULT_FULL_NAME.toString()))
+            .andExpect(jsonPath("$.motdepasse").value(DEFAULT_MOTDEPASSE.toString()))
+            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO.toString()))
+            .andExpect(jsonPath("$.numr").value(DEFAULT_NUMR.toString()))
+            .andExpect(jsonPath("$.numer").value(DEFAULT_NUMER.toString()))
+            .andExpect(jsonPath("$.az").value(DEFAULT_AZ.toString()));
     }
 
     @Test
@@ -222,7 +257,12 @@ public class MedecinResourceIntTest {
                 .photo(UPDATED_PHOTO)
                 .photoContentType(UPDATED_PHOTO_CONTENT_TYPE)
                 .login(UPDATED_LOGIN)
-                .motdepasse(UPDATED_MOTDEPASSE);
+                .fullName(UPDATED_FULL_NAME)
+                .motdepasse(UPDATED_MOTDEPASSE)
+                .numero(UPDATED_NUMERO)
+                .numr(UPDATED_NUMR)
+                .numer(UPDATED_NUMER)
+                .az(UPDATED_AZ);
 
         restMedecinMockMvc.perform(put("/api/medecins")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -241,7 +281,12 @@ public class MedecinResourceIntTest {
         assertThat(testMedecin.getPhoto()).isEqualTo(UPDATED_PHOTO);
         assertThat(testMedecin.getPhotoContentType()).isEqualTo(UPDATED_PHOTO_CONTENT_TYPE);
         assertThat(testMedecin.getLogin()).isEqualTo(UPDATED_LOGIN);
+        assertThat(testMedecin.getFullName()).isEqualTo(UPDATED_FULL_NAME);
         assertThat(testMedecin.getMotdepasse()).isEqualTo(UPDATED_MOTDEPASSE);
+        assertThat(testMedecin.getNumero()).isEqualTo(UPDATED_NUMERO);
+        assertThat(testMedecin.getNumr()).isEqualTo(UPDATED_NUMR);
+        assertThat(testMedecin.getNumer()).isEqualTo(UPDATED_NUMER);
+        assertThat(testMedecin.getAz()).isEqualTo(UPDATED_AZ);
     }
 
     @Test

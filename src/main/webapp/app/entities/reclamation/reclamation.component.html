@@ -17,15 +17,15 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="titre"><span jhiTranslate="avancementApp.reclamation.titre">Titre</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="objet"><span jhiTranslate="avancementApp.reclamation.objet">Objet</span> <span class="fa fa-sort"></span></th>
+
+            <th jhiSortBy="titre"><span jhiTranslate="avancementApp.reclamation.titre">Titre</span> </th>
+            <th jhiSortBy="objet"><span jhiTranslate="avancementApp.reclamation.objet">Objet</span> </th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let reclamation of reclamations ;trackBy: trackId">
-                <td><a [routerLink]="['../reclamation', reclamation.id ]">{{reclamation.id}}</a></td>
+
                 <td>{{reclamation.titre}}</td>
                 <td>{{reclamation.objet}}</td>
                 <td class="text-xs-right">

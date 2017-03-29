@@ -1,0 +1,72 @@
+<div style="margin-left: 30px;">
+<div *ngIf="fichepatient">
+    <h2><span jhiTranslate="avancementApp.fichepatient.detail.title">Fichepatient</span> {{fichepatient.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.fichepatient.nom">Nom</span></dt>
+        <dd>
+            <span>{{fichepatient.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichepatient.prenom">Prenom</span></dt>
+        <dd>
+            <span>{{fichepatient.prenom}}</span>
+        </dd>
+        <dt>Nom du medecin traitant </dt>
+        <dd>
+            <span>{{fichepatient.medid}}</span>
+        </dd>
+        <dt>Prenom du medecin traitant </dt>
+        <dd>
+            <span>{{fichepatient.med}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichepatient.datedenaissance">Datedenaissance</span></dt>
+        <dd>
+            <span>{{fichepatient.datedenaissance | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichepatient.antecedents">Antecedents</span></dt>
+        <dd>
+            <span>{{fichepatient.antecedents}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichepatient.resultatdudernierexamen">Resultatdudernierexamen</span></dt>
+        <dd>
+            <span>{{fichepatient.resultatdudernierexamen}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichepatient.notesprofitionnelparamedicaux">Notesprofitionnelparamedicaux</span></dt>
+        <dd>
+            <span>{{fichepatient.notesprofitionnelparamedicaux}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichepatient.compterendu">Compterendu</span></dt>
+        <dd>
+            <div *ngIf="fichepatient.compterendu">
+                <a (click)="openFile(fichepatient.compterenduContentType, fichepatient.compterendu)" jhiTranslate="entity.action.open">open</a>
+                {{fichepatient.compterenduContentType}}, {{byteSize(fichepatient.compterendu)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichepatient.recommandations">Recommandations</span></dt>
+        <dd>
+            <span>{{fichepatient.recommandations}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichepatient.perscriptionmedicamenteuses">Perscriptionmedicamenteuses</span></dt>
+        <dd>
+            <span>{{fichepatient.perscriptionmedicamenteuses}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.fichepatient.groupesanguin">Groupesanguin</span></dt>
+        <dd>
+            <span>{{fichepatient.groupesanguin}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'fichepatient/'+ fichepatient.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div></div>

@@ -8,9 +8,6 @@ import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jh
 import { Medecin } from './medecin.model';
 import { MedecinPopupService } from './medecin-popup.service';
 import { MedecinService } from './medecin.service';
-
-import {Servicemedical} from "../servicemedical/servicemedical.model";
-import {ServicemedicalService} from "../servicemedical/servicemedical.service";
 @Component({
     selector: 'jhi-medecin-dialog',
     templateUrl: './medecin-dialog.component.html'
@@ -19,7 +16,6 @@ export class MedecinDialogComponent implements OnInit {
 
     medecin: Medecin;
     authorities: any[];
-    servicemedicals:Servicemedical[];
     isSaving: boolean;
     constructor(
         public activeModal: NgbActiveModal,
@@ -27,7 +23,6 @@ export class MedecinDialogComponent implements OnInit {
         private dataUtils: DataUtils,
         private alertService: AlertService,
         private medecinService: MedecinService,
-        private servicemedicalService: ServicemedicalService,
         private eventManager: EventManager,
         private router: Router
     ) {
@@ -36,7 +31,6 @@ export class MedecinDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.loadAllserv();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     }
     byteSize(field) {
@@ -63,14 +57,7 @@ export class MedecinDialogComponent implements OnInit {
         this.activeModal.dismiss('cancel');
         this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
     }
-    loadAllserv() {
-        this.servicemedicalService.query().subscribe(
-            (res: Response) => {
-                this.servicemedicals = res.json();
-            },
-            (res: Response) => this.onError(res.json())
-        );
-    }
+
     save () {
         this.isSaving = true;
         if (this.medecin.id !== undefined) {
@@ -125,7 +112,6 @@ export class MedecinPopupComponent implements OnInit, OnDestroy {
 
         });
     }
-
 
     ngOnDestroy() {
         this.routeSub.unsubscribe();

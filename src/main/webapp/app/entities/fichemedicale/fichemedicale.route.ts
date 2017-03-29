@@ -35,14 +35,14 @@ export const fichemedicaleRoute: Routes = [
       'pagingParams': FichemedicaleResolvePagingParams
     },
     data: {
-        authorities: ['ROLE_ADMIN'],
+        authorities: ['ROLE_USER'],
         pageTitle: 'avancementApp.fichemedicale.home.title'
     }
   }, {
     path: 'fichemedicale/:id',
     component: FichemedicaleDetailComponent,
     data: {
-        authorities: ['ROLE_ADMIN'],
+        authorities: ['ROLE_USER'],
         pageTitle: 'avancementApp.fichemedicale.home.title'
     }
   }
@@ -53,7 +53,7 @@ export const fichemedicalePopupRoute: Routes = [
     path: 'fichemedicale-new',
     component: FichemedicalePopupComponent,
     data: {
-        authorities: ['ROLE_ADMIN'],
+        authorities: ['ROLE_USER'],
         pageTitle: 'avancementApp.fichemedicale.home.title'
     },
     outlet: 'popup'
@@ -62,7 +62,7 @@ export const fichemedicalePopupRoute: Routes = [
     path: 'fichemedicale/:id/edit',
     component: FichemedicalePopupComponent,
     data: {
-        authorities: ['ROLE_ADMIN'],
+        authorities: ['ROLE_USER'],
         pageTitle: 'avancementApp.fichemedicale.home.title'
     },
     outlet: 'popup'
@@ -71,7 +71,7 @@ export const fichemedicalePopupRoute: Routes = [
     path: 'fichemedicale/:id/delete',
     component: FichemedicaleDeletePopupComponent,
     data: {
-        authorities: ['ROLE_ADMIN'],
+        authorities: ['ROLE_USER'],
         pageTitle: 'avancementApp.fichemedicale.home.title'
     },
     outlet: 'popup'

@@ -192,7 +192,7 @@ public class UserService {
         });
     }
 
-    
+
     public Page<UserDTO> getAllManagedUsers(Pageable pageable) {
         return userRepository.findAll(pageable).map(UserDTO::new);
     }

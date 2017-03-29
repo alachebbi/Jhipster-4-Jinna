@@ -92,7 +92,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.login = login.toLowerCase(Locale.ENGLISH);
     }
 
-    public String getPassword() {
+   public String getPassword() {
         return password;
     }
 
@@ -100,7 +100,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.password = password;
     }
 
-    public String getFirstName() {
+   public String getFirstName() {
         return firstName;
     }
 

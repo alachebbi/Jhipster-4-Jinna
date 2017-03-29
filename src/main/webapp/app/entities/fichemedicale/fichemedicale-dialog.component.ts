@@ -3,11 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Response } from '@angular/http';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
+import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jhipster';
 
 import { Fichemedicale } from './fichemedicale.model';
 import { FichemedicalePopupService } from './fichemedicale-popup.service';
 import { FichemedicaleService } from './fichemedicale.service';
+import { Medecin } from '../medecin/medecin.model';
+import { MedecinService } from '../medecin/medecin.service';
 @Component({
     selector: 'jhi-fichemedicale-dialog',
     templateUrl: './fichemedicale-dialog.component.html'
@@ -15,12 +17,15 @@ import { FichemedicaleService } from './fichemedicale.service';
 export class FichemedicaleDialogComponent implements OnInit {
 
     fichemedicale: Fichemedicale;
+    medecins: Medecin[];
     authorities: any[];
     isSaving: boolean;
     constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
+        private dataUtils: DataUtils,
         private alertService: AlertService,
+        private medecinService: MedecinService,
         private fichemedicaleService: FichemedicaleService,
         private eventManager: EventManager,
         private router: Router
@@ -30,13 +35,41 @@ export class FichemedicaleDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.loadAllmed();
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData($event, fichemedicale, field, isImage) {
+        if ($event.target.files && $event.target.files[0]) {
+            let $file = $event.target.files[0];
+            if (isImage && !/^image\//.test($file.type)) {
+                return;
+            }
+            this.dataUtils.toBase64($file, (base64Data) => {
+                fichemedicale[field] = base64Data;
+                fichemedicale[`${field}ContentType`] = $file.type;
+            });
+        }
     }
     clear () {
         this.activeModal.dismiss('cancel');
         this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
     }
-
+    loadAllmed() {
+        this.medecinService.query().subscribe(
+            (res: Response) => {
+                this.medecins = res.json();
+            },
+            (res: Response) => this.onError(res.json())
+        );
+    }
     save () {
         this.isSaving = true;
         if (this.fichemedicale.id !== undefined) {

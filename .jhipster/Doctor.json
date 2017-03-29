@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "motdepasse",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "login",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "servicemedi",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "specialite",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nometprenom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "datenaissance",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "daten",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "doctor",
+    "pagination": "pagination"
+}

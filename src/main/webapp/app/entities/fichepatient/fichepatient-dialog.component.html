@@ -1,0 +1,113 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myFichepatientLabel" jhiTranslate="avancementApp.fichepatient.home.createOrEditLabel">Create or edit a Fichepatient</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="fichepatient.nom"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.prenom" for="field_prenom">Prenom</label>
+            <input type="text" class="form-control" name="prenom" id="field_prenom"
+                [(ngModel)]="fichepatient.prenom"
+             />
+        </div>
+        <div class="form-group">
+            <label>Nom du medecin traitant</label>
+            <select class="form-control" name="medecin" [(ngModel)]="fichepatient.medid">
+                <option *ngFor="let medecin of medecins ;trackBy: trackId" [value]="medecin.nom">{{medecin.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Prénom du medecin traitant</label>
+            <select class="form-control" name="medecin" [(ngModel)]="fichepatient.medid">
+                <option *ngFor="let medecin of medecins ;trackBy: trackId" [value]="medecin.prenom">{{medecin.prenom}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.datedenaissance" for="field_datedenaissance">Datedenaissance</label>
+            <div class="input-group">
+                <input id="field_datedenaissance" type="text" class="form-control" name="datedenaissance" ngbDatepicker  #datedenaissanceDp="ngbDatepicker" [(ngModel)]="fichepatient.datedenaissance"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="datedenaissanceDp.open()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.antecedents" for="field_antecedents">Antecedents</label>
+            <input type="text" class="form-control" name="antecedents" id="field_antecedents"
+                [(ngModel)]="fichepatient.antecedents"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.resultatdudernierexamen" for="field_resultatdudernierexamen">Resultatdudernierexamen</label>
+            <input type="text" class="form-control" name="resultatdudernierexamen" id="field_resultatdudernierexamen"
+                [(ngModel)]="fichepatient.resultatdudernierexamen"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.notesprofitionnelparamedicaux" for="field_notesprofitionnelparamedicaux">Notesprofitionnelparamedicaux</label>
+            <input type="text" class="form-control" name="notesprofitionnelparamedicaux" id="field_notesprofitionnelparamedicaux"
+                [(ngModel)]="fichepatient.notesprofitionnelparamedicaux"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.compterendu" for="field_compterendu">Compterendu</label>
+            <div>
+                <div *ngIf="fichepatient.compterendu" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(fichepatient.compterenduContentType, fichepatient.compterendu)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{fichepatient.compterenduContentType}}, {{byteSize(fichepatient.compterendu)}}</span>
+                    <button type="button" (click)="fichepatient.compterendu=null;fichepatient.compterenduContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, fichepatient, 'compterendu', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="compterendu" id="field_compterendu"
+                [(ngModel)]="fichepatient.compterendu"
+             />
+            <input type="hidden" class="form-control" name="compterenduContentType" id="field_compterenduContentType"
+                [(ngModel)]="fichepatient.compterenduContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.recommandations" for="field_recommandations">Recommandations</label>
+            <input type="text" class="form-control" name="recommandations" id="field_recommandations"
+                [(ngModel)]="fichepatient.recommandations"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.perscriptionmedicamenteuses" for="field_perscriptionmedicamenteuses">Perscriptionmedicamenteuses</label>
+            <input type="text" class="form-control" name="perscriptionmedicamenteuses" id="field_perscriptionmedicamenteuses"
+                [(ngModel)]="fichepatient.perscriptionmedicamenteuses"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.fichepatient.groupesanguin" for="field_groupesanguin">Groupesanguin</label>
+            <input type="text" class="form-control" name="groupesanguin" id="field_groupesanguin"
+                [(ngModel)]="fichepatient.groupesanguin"
+             />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

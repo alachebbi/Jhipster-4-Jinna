@@ -17,6 +17,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.Base64Utils;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -50,6 +51,11 @@ public class PatientResourceIntTest {
 
     private static final Long DEFAULT_NUMSECSOCIALE = 1L;
     private static final Long UPDATED_NUMSECSOCIALE = 2L;
+
+    private static final byte[] DEFAULT_DOSSIER = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_DOSSIER = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_DOSSIER_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_DOSSIER_CONTENT_TYPE = "image/png";
 
     @Autowired
     private PatientRepository patientRepository;
@@ -85,7 +91,9 @@ public class PatientResourceIntTest {
                 .prenom(DEFAULT_PRENOM)
                 .cin(DEFAULT_CIN)
                 .datedenaissance(DEFAULT_DATEDENAISSANCE)
-                .numsecsociale(DEFAULT_NUMSECSOCIALE);
+                .numsecsociale(DEFAULT_NUMSECSOCIALE)
+                .dossier(DEFAULT_DOSSIER)
+                .dossierContentType(DEFAULT_DOSSIER_CONTENT_TYPE);
         return patient;
     }
 
@@ -115,6 +123,8 @@ public class PatientResourceIntTest {
         assertThat(testPatient.getCin()).isEqualTo(DEFAULT_CIN);
         assertThat(testPatient.getDatedenaissance()).isEqualTo(DEFAULT_DATEDENAISSANCE);
         assertThat(testPatient.getNumsecsociale()).isEqualTo(DEFAULT_NUMSECSOCIALE);
+        assertThat(testPatient.getDossier()).isEqualTo(DEFAULT_DOSSIER);
+        assertThat(testPatient.getDossierContentType()).isEqualTo(DEFAULT_DOSSIER_CONTENT_TYPE);
     }
 
     @Test
@@ -150,7 +160,9 @@ public class PatientResourceIntTest {
             .andExpect(jsonPath("$.[*].prenom").value(hasItem(DEFAULT_PRENOM.toString())))
             .andExpect(jsonPath("$.[*].cin").value(hasItem(DEFAULT_CIN.intValue())))
             .andExpect(jsonPath("$.[*].datedenaissance").value(hasItem(DEFAULT_DATEDENAISSANCE.toString())))
-            .andExpect(jsonPath("$.[*].numsecsociale").value(hasItem(DEFAULT_NUMSECSOCIALE.intValue())));
+            .andExpect(jsonPath("$.[*].numsecsociale").value(hasItem(DEFAULT_NUMSECSOCIALE.intValue())))
+            .andExpect(jsonPath("$.[*].dossierContentType").value(hasItem(DEFAULT_DOSSIER_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].dossier").value(hasItem(Base64Utils.encodeToString(DEFAULT_DOSSIER))));
     }
 
     @Test
@@ -167,7 +179,9 @@ public class PatientResourceIntTest {
             .andExpect(jsonPath("$.prenom").value(DEFAULT_PRENOM.toString()))
             .andExpect(jsonPath("$.cin").value(DEFAULT_CIN.intValue()))
             .andExpect(jsonPath("$.datedenaissance").value(DEFAULT_DATEDENAISSANCE.toString()))
-            .andExpect(jsonPath("$.numsecsociale").value(DEFAULT_NUMSECSOCIALE.intValue()));
+            .andExpect(jsonPath("$.numsecsociale").value(DEFAULT_NUMSECSOCIALE.intValue()))
+            .andExpect(jsonPath("$.dossierContentType").value(DEFAULT_DOSSIER_CONTENT_TYPE))
+            .andExpect(jsonPath("$.dossier").value(Base64Utils.encodeToString(DEFAULT_DOSSIER)));
     }
 
     @Test
@@ -190,7 +204,9 @@ public class PatientResourceIntTest {
                 .prenom(UPDATED_PRENOM)
                 .cin(UPDATED_CIN)
                 .datedenaissance(UPDATED_DATEDENAISSANCE)
-                .numsecsociale(UPDATED_NUMSECSOCIALE);
+                .numsecsociale(UPDATED_NUMSECSOCIALE)
+                .dossier(UPDATED_DOSSIER)
+                .dossierContentType(UPDATED_DOSSIER_CONTENT_TYPE);
 
         restPatientMockMvc.perform(put("/api/patients")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -206,6 +222,8 @@ public class PatientResourceIntTest {
         assertThat(testPatient.getCin()).isEqualTo(UPDATED_CIN);
         assertThat(testPatient.getDatedenaissance()).isEqualTo(UPDATED_DATEDENAISSANCE);
         assertThat(testPatient.getNumsecsociale()).isEqualTo(UPDATED_NUMSECSOCIALE);
+        assertThat(testPatient.getDossier()).isEqualTo(UPDATED_DOSSIER);
+        assertThat(testPatient.getDossierContentType()).isEqualTo(UPDATED_DOSSIER_CONTENT_TYPE);
     }
 
     @Test

@@ -1,0 +1,57 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myInfirmierLabel" jhiTranslate="avancementApp.infirmier.home.createOrEditLabel">Create or edit a Infirmier</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!infirmier.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="infirmier.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.infirmier.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="infirmier.nom"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.infirmier.prenom" for="field_prenom">Prenom</label>
+            <input type="text" class="form-control" name="prenom" id="field_prenom"
+                [(ngModel)]="infirmier.prenom"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.infirmier.age" for="field_age">Age</label>
+            <input type="number" class="form-control" name="age" id="field_age"
+                [(ngModel)]="infirmier.age"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.infirmier.login" for="field_login">Login</label>
+            <input type="text" class="form-control" name="login" id="field_login"
+                [(ngModel)]="infirmier.login"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.infirmier.password" for="field_password">Password</label>
+            <input type="text" class="form-control" name="password" id="field_password"
+                [(ngModel)]="infirmier.password"
+             />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { JhiLanguageService ,AlertService} from 'ng-jhipster';
 import { Servicemedical } from './servicemedical.model';
 import { ServicemedicalService } from './servicemedical.service';
-import {Medecin} from "../medecin/medecin.model";
-import {MedecinService} from "../medecin/medecin.service";
+import {Doctor} from "../doctor/doctor.model";
+import {DoctorService} from "../doctor/doctor.service";
 import {Response} from "@angular/http";
 
 
@@ -16,11 +16,12 @@ export class ServicemedicalDetailComponent implements OnInit, OnDestroy {
 
     servicemedical: Servicemedical;
     private subscription: any;
-    medecins: Medecin[];
+    doctors: Doctor[];
+    name:string;
 
     constructor(
         private jhiLanguageService: JhiLanguageService,
-        private medecinService : MedecinService,
+        private doctorService : DoctorService,
         private alertService: AlertService,
         private servicemedicalService: ServicemedicalService,
         private route: ActivatedRoute
@@ -32,13 +33,18 @@ export class ServicemedicalDetailComponent implements OnInit, OnDestroy {
 
         this.subscription = this.route.params.subscribe(params => {
             this.load(params['id']);
-            this.loadAll(params['id']);
+
+
         });
     }
 
     load (id) {
         this.servicemedicalService.find(id).subscribe(servicemedical => {
             this.servicemedical = servicemedical;
+            this.name=this.servicemedical.nom;
+            this.loadAll(this.name);
+
+
         });
     }
     previousState() {
@@ -48,10 +54,10 @@ export class ServicemedicalDetailComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
-    loadAll(id) {
-        this.medecinService.query().subscribe(
+    loadAll(nom) {
+        this.doctorService.query().subscribe(
             (res: Response) => {
-                this.medecins = res.json().filter((medecin =>medecin.serviceid===id));
+                this.doctors = res.json().filter(doctor =>doctor.servicemedi==nom);
             },
             (res: Response) => this.onError(res.json())
         );

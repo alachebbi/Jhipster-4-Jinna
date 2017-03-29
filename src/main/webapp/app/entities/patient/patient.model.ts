@@ -6,5 +6,6 @@ export class Patient {
         public cin?: number,
         public datedenaissance?: any,
         public numsecsociale?: number,
+        public dossier?: any,
     ) { }
 }

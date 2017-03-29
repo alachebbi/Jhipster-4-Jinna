@@ -17,6 +17,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.Base64Utils;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -66,6 +67,11 @@ public class FichemedicaleResourceIntTest {
     private static final String DEFAULT_GROUPESANGUIN = "AAAAAAAAAA";
     private static final String UPDATED_GROUPESANGUIN = "BBBBBBBBBB";
 
+    private static final byte[] DEFAULT_COMPTE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_COMPTE = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_COMPTE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_COMPTE_CONTENT_TYPE = "image/png";
+
     @Autowired
     private FichemedicaleRepository fichemedicaleRepository;
 
@@ -105,7 +111,9 @@ public class FichemedicaleResourceIntTest {
                 .comptesrendus(DEFAULT_COMPTESRENDUS)
                 .recommandations(DEFAULT_RECOMMANDATIONS)
                 .perscriptionmedicamenteuses(DEFAULT_PERSCRIPTIONMEDICAMENTEUSES)
-                .groupesanguin(DEFAULT_GROUPESANGUIN);
+                .groupesanguin(DEFAULT_GROUPESANGUIN)
+                .compte(DEFAULT_COMPTE)
+                .compteContentType(DEFAULT_COMPTE_CONTENT_TYPE);
         return fichemedicale;
     }
 
@@ -140,6 +148,8 @@ public class FichemedicaleResourceIntTest {
         assertThat(testFichemedicale.getRecommandations()).isEqualTo(DEFAULT_RECOMMANDATIONS);
         assertThat(testFichemedicale.getPerscriptionmedicamenteuses()).isEqualTo(DEFAULT_PERSCRIPTIONMEDICAMENTEUSES);
         assertThat(testFichemedicale.getGroupesanguin()).isEqualTo(DEFAULT_GROUPESANGUIN);
+        assertThat(testFichemedicale.getCompte()).isEqualTo(DEFAULT_COMPTE);
+        assertThat(testFichemedicale.getCompteContentType()).isEqualTo(DEFAULT_COMPTE_CONTENT_TYPE);
     }
 
     @Test
@@ -180,7 +190,9 @@ public class FichemedicaleResourceIntTest {
             .andExpect(jsonPath("$.[*].comptesrendus").value(hasItem(DEFAULT_COMPTESRENDUS.toString())))
             .andExpect(jsonPath("$.[*].recommandations").value(hasItem(DEFAULT_RECOMMANDATIONS.toString())))
             .andExpect(jsonPath("$.[*].perscriptionmedicamenteuses").value(hasItem(DEFAULT_PERSCRIPTIONMEDICAMENTEUSES.toString())))
-            .andExpect(jsonPath("$.[*].groupesanguin").value(hasItem(DEFAULT_GROUPESANGUIN.toString())));
+            .andExpect(jsonPath("$.[*].groupesanguin").value(hasItem(DEFAULT_GROUPESANGUIN.toString())))
+            .andExpect(jsonPath("$.[*].compteContentType").value(hasItem(DEFAULT_COMPTE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].compte").value(hasItem(Base64Utils.encodeToString(DEFAULT_COMPTE))));
     }
 
     @Test
@@ -202,7 +214,9 @@ public class FichemedicaleResourceIntTest {
             .andExpect(jsonPath("$.comptesrendus").value(DEFAULT_COMPTESRENDUS.toString()))
             .andExpect(jsonPath("$.recommandations").value(DEFAULT_RECOMMANDATIONS.toString()))
             .andExpect(jsonPath("$.perscriptionmedicamenteuses").value(DEFAULT_PERSCRIPTIONMEDICAMENTEUSES.toString()))
-            .andExpect(jsonPath("$.groupesanguin").value(DEFAULT_GROUPESANGUIN.toString()));
+            .andExpect(jsonPath("$.groupesanguin").value(DEFAULT_GROUPESANGUIN.toString()))
+            .andExpect(jsonPath("$.compteContentType").value(DEFAULT_COMPTE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.compte").value(Base64Utils.encodeToString(DEFAULT_COMPTE)));
     }
 
     @Test
@@ -230,7 +244,9 @@ public class FichemedicaleResourceIntTest {
                 .comptesrendus(UPDATED_COMPTESRENDUS)
                 .recommandations(UPDATED_RECOMMANDATIONS)
                 .perscriptionmedicamenteuses(UPDATED_PERSCRIPTIONMEDICAMENTEUSES)
-                .groupesanguin(UPDATED_GROUPESANGUIN);
+                .groupesanguin(UPDATED_GROUPESANGUIN)
+                .compte(UPDATED_COMPTE)
+                .compteContentType(UPDATED_COMPTE_CONTENT_TYPE);
 
         restFichemedicaleMockMvc.perform(put("/api/fichemedicales")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -251,6 +267,8 @@ public class FichemedicaleResourceIntTest {
         assertThat(testFichemedicale.getRecommandations()).isEqualTo(UPDATED_RECOMMANDATIONS);
         assertThat(testFichemedicale.getPerscriptionmedicamenteuses()).isEqualTo(UPDATED_PERSCRIPTIONMEDICAMENTEUSES);
         assertThat(testFichemedicale.getGroupesanguin()).isEqualTo(UPDATED_GROUPESANGUIN);
+        assertThat(testFichemedicale.getCompte()).isEqualTo(UPDATED_COMPTE);
+        assertThat(testFichemedicale.getCompteContentType()).isEqualTo(UPDATED_COMPTE_CONTENT_TYPE);
     }
 
     @Test

@@ -5,21 +5,20 @@ Navbar
     font-size: 10px;
     color: #ccc
 }
-
-
 .jh-navbar {
     /* background-color: #353d47;*/
     background-color: #8c0f15;
 
-    height:610px;
-    width: 200px;
+    height:1000px;
+    width: 320px;
 
     float: left;
-    position: fixed;
+    position: relative;
 
 
 
 }
+
 
 .jh-navbar .profile-image {
     margin: -10px 0px;
@@ -28,8 +27,29 @@ Navbar
     border-radius: 50%;
 }
 
+.jh-navbar .dropdown-item{
+    color: #f8f8f8;
+    background-color:#8c0f15;
+    padding-bottom: 15px;
+    padding-right: 0px;
+    margin-left: 0px;
+    height: 30px;
+
+}
+.dropdown-item:hover{
+    background-color: #242b5d;
+}
+span:hover{
+    background-color: #242b5d;
+}
+a:hover{
+    background-color: #242b5d;
+    height: 30px;
+    width: 100%;
+}
 .jh-navbar .dropdown-item.active, .jh-navbar .dropdown-item.active:focus, .jh-navbar .dropdown-item.active:hover {
-    background-color: #353d47;
+    background-color: #242b5d;
+    color: #f8f8f8;
 }
 
 .jh-navbar .dropdown-toggle::after {
@@ -49,13 +69,13 @@ Navbar
 }
 
 .jh-navbar .jh-navbar-toggler {
-    color: #ccc;
+    color:  #8c0f15;
     font-size: 1.5em;
     padding: 10px;
 }
 
 .jh-navbar .jh-navbar-toggler:hover {
-    color: #fff;
+    color: #1e2aff;
 }
 
 
@@ -84,8 +104,17 @@ Logo styles
 }
 
 .logo-img {
-    height: 100%;
+
     background: url("../../../content/images/hh.jpg") no-repeat center center;
     background-size: contain;
-    width: 100%;
+
+    border-radius:50%;
+    width:160px;
+    height:160px;
+    border:2px solid #8c0f15;
+}
+a{
+    font-style: oblique;
+    font-weight: 500;
+    padding: 30px;
 }

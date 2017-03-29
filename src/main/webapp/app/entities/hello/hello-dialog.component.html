@@ -1,0 +1,73 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myHelloLabel" jhiTranslate="avancementApp.hello.home.createOrEditLabel">Create or edit a Hello</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!hello.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="hello.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.hello.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="hello.name"
+             />
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.hello.maladie" for="field_maladie">Maladie</label>
+            <input type="text" class="form-control" name="maladie" id="field_maladie"
+                [(ngModel)]="hello.maladie"
+             />
+        </div>
+        <div class="form-group">
+            <label>Medicament</label>
+            <select class="form-control" name="medicamentid" [(ngModel)]="hello.medicamentid">
+                <option *ngFor="let medicament of medicaments ;trackBy: trackId" [value]="medicament.nom">{{medicament.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.hello.symptomes" for="field_symptomes">Symptomes</label>
+            <input type="text" class="form-control" name="symptomes" id="field_symptomes"
+                [(ngModel)]="hello.symptomes"
+             />
+        </div>
+        <div class="form-group">
+            <label>Durée : </label>
+            <select class="form-control" name="duree" [(ngModel)]="hello.duree">
+                <option >3 jours</option>
+                <option >4 jours</option>
+                <option >1 semaine</option>
+                <option >2 semaines</option>
+                <option >3 semaines</option>
+                <option >1 mois</option>
+                <option>À vie</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

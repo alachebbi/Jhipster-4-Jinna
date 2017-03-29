@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-md-2">
+            <div class="list-group">
+                <a href="#" class="list-group-item disabled">
+                    List of users
+                </a>
+                <div style="height: 400px; overflow-y: scroll">
+                    <span *ngFor="let user of users" (click)="onUserSelected(user)" [ngClass]="{'chat-selected':user.active}" class="list-group-item">{{user.login}}</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 col-lg-7">
+            <div class="panel panel-primary">
+                <div class="panel-heading chat-header" >
+                    <span class="glyphicon glyphicon-comment"></span> Chat Room - [ {{receiver}} ]
+                </div>
+                <hr class="line" />
+                <div  angular2-auto-scroll lock-y-offset="5" observe-attributes class="panel-body chat-body">
+                    <ul class="chat">
+                        <div *ngFor="let msg of receiverMessage">
+                        <li *ngIf="msg.senderName != sender" class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">{{msg.receiverName}}</strong> <small class="pull-right text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>{{msg.createdDate | date :'medium'}}</small>
+                                </div>
+                                <p>
+                                   {{msg.msg}}
+                                </p>
+                            </div>
+                        </li>
+                        <li *ngIf="msg.senderName == sender "  class="right clearfix"><span class="chat-img pull-right">
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>{{msg.createdDate | date :'medium' }}</small>
+                                    <strong class="pull-right primary-font">{{msg.senderName}}</strong>
+                                </div>
+                                <p>
+                                    {{msg.msg}}
+                                </p>
+                            </div>
+                        </li>
+                        </div>
+                    </ul>
+                </div>
+                <div class="panel-footer chat-footer">
+                    <form name="sendForm" role="form" novalidate  #sendForm="ngForm">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" autocomplete="off" [(ngModel)]="sendText" name="text"  required class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button [disabled]="sendForm.form.invalid" (click)="sendMessage()" class="btn btn-primary" id="btn-chat">Send</button>
+                        </span>
+                    </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

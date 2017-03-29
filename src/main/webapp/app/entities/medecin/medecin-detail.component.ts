@@ -1,11 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { JhiLanguageService, DataUtils ,AlertService} from 'ng-jhipster';
+import { JhiLanguageService, DataUtils } from 'ng-jhipster';
 import { Medecin } from './medecin.model';
 import { MedecinService } from './medecin.service';
-import {Servicemedical} from "../servicemedical/servicemedical.model";
-import {ServicemedicalService} from "../servicemedical/servicemedical.service";
-import {Response} from "@angular/http";
 
 @Component({
     selector: 'jhi-medecin-detail',
@@ -15,14 +12,11 @@ export class MedecinDetailComponent implements OnInit, OnDestroy {
 
     medecin: Medecin;
     private subscription: any;
-    servicemedical:Servicemedical;
 
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private dataUtils: DataUtils,
         private medecinService: MedecinService,
-        private alertService: AlertService,
-        private servicemedicalService: ServicemedicalService,
         private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['medecin']);
@@ -31,7 +25,6 @@ export class MedecinDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subscription = this.route.params.subscribe(params => {
             this.load(params['id']);
-            this.loadAllser(params['serviceid']);
         });
     }
 
@@ -53,18 +46,6 @@ export class MedecinDetailComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
-    }
-    loadAllser(serviceid) {
-        this.medecinService.query().subscribe(
-            (res: Response) => {
-                this.servicemedical = res.json().filter((servicemedical =>servicemedical.id===serviceid));
-            },
-            (res: Response) => this.onError(res.json())
-        );
-
-    }
-    private onError (error) {
-        this.alertService.error(error.message, null, null);
     }
 
 }

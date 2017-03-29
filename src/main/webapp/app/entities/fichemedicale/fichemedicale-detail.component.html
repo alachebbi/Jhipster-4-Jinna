@@ -1,48 +1,59 @@
-
+<div style="margin-left: 30px;">
 <div *ngIf="fichemedicale">
-    <h2><span jhiTranslate="avancementApp.fichemedicale.detail.title">Fiche medicale</span> </h2>
+    <h2><span jhiTranslate="avancementApp.fichemedicale.detail.title">Fichemedicale</span> {{fichemedicale.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row">
-        <dt><span jhiTranslate="avancementApp.fichemedicale.nom">Nom</span></dt>
+        <dt>Nom : </dt>
         <dd>
             <span>{{fichemedicale.nom}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.fichemedicale.prenom">Prenom</span></dt>
+        <dt>Prenom : </dt>
         <dd>
             <span>{{fichemedicale.prenom}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.fichemedicale.datenaissance">Date de naissance</span></dt>
+        <dt>Medecin traitant : </dt>
+        <dd>
+            <span>{{fichemedicale.medecintraitan}} </span>
+        </dd>
+        <dt>Date de naissance : </dt>
         <dd>
             <span>{{fichemedicale.datenaissance | date:'mediumDate'}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.fichemedicale.antecedents">Antecedents</span></dt>
+        <dt>Antécedents : </dt>
         <dd>
             <span>{{fichemedicale.antecedents}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.fichemedicale.resultatdudernierexamen">Resultat du dernierexamen</span></dt>
+        <dt>Resultat du dernier examen : </dt>
         <dd>
             <span>{{fichemedicale.resultatdudernierexamen}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.fichemedicale.notesprofitionnelsparamedicaux">Notes profitionnels paramedicaux</span></dt>
+        <dt>Notes profitionnels paramedicaux : </dt>
         <dd>
             <span>{{fichemedicale.notesprofitionnelsparamedicaux}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.fichemedicale.comptesrendus">Comptes rendus</span></dt>
+        <dt>Comptes rendus : </dt>
         <dd>
             <span>{{fichemedicale.comptesrendus}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.fichemedicale.recommandations">Recommandations</span></dt>
+        <dt>Récommandations : </dt>
         <dd>
             <span>{{fichemedicale.recommandations}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.fichemedicale.perscriptionmedicamenteuses">Perscriptions medicamenteuses</span></dt>
+        <dt>Perscriptions medicamenteuses</dt>
         <dd>
             <span>{{fichemedicale.perscriptionmedicamenteuses}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.fichemedicale.groupesanguin">Groupe sanguin</span></dt>
+        <dt>Groupe sanguin : </dt>
         <dd>
             <span>{{fichemedicale.groupesanguin}}</span>
+        </dd>
+        <dt>Compte rendue : </dt>
+        <dd>
+            <div *ngIf="fichemedicale.compte">
+                <a (click)="openFile(fichemedicale.compteContentType, fichemedicale.compte)" jhiTranslate="entity.action.open">open</a>
+
+            </div>
         </dd>
     </dl>
 
@@ -58,4 +69,4 @@
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
-</div>
+</div></div>

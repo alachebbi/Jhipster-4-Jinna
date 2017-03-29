@@ -17,7 +17,7 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+
             <th jhiSortBy="nom"><span jhiTranslate="avancementApp.medicament.nom">Nom</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="type"><span jhiTranslate="avancementApp.medicament.type">Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="quantity"><span jhiTranslate="avancementApp.medicament.quantity">Quantity</span> <span class="fa fa-sort"></span></th>
@@ -29,7 +29,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let medicament of medicaments ;trackBy: trackId">
-                <td><a [routerLink]="['../medicament', medicament.id ]">{{medicament.id}}</a></td>
+
                 <td>{{medicament.nom}}</td>
                 <td>{{medicament.type}}</td>
                 <td>{{medicament.quantity}}</td>

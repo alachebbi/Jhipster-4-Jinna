@@ -1,5 +1,12 @@
 <div>
     <h2><span jhiTranslate="avancementApp.fichemedicale.home.title">Fichemedicales</span>
+
+
+
+
+
+
+
         <button class="btn btn-primary float-xs-right create-fichemedicale" [routerLink]="['/', { outlets: { popup: ['fichemedicale-new'] } }]">
             <span class="fa fa-plus"></span>
             <span  jhiTranslate="avancementApp.fichemedicale.home.createLabel">
@@ -13,37 +20,25 @@
         </div>
     </div>
     <br/>
+    <label>Filtrer les fiches par nom : </label>
+    <input type="text" [(ngModel)]="filter" />
     <div class="table-responsive" *ngIf="fichemedicales">
+
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
 
-            <th jhiSortBy="nom"><span jhiTranslate="avancementApp.fichemedicale.nom">Nom</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="prenom"><span jhiTranslate="avancementApp.fichemedicale.prenom">Prenom</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="datenaissance"><span jhiTranslate="avancementApp.fichemedicale.datenaissance">Date de naissance</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="antecedents"><span jhiTranslate="avancementApp.fichemedicale.antecedents">Antecedents</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="resultatdudernierexamen"><span jhiTranslate="avancementApp.fichemedicale.resultatdudernierexamen">Resultat du dernier examen</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="notesprofitionnelsparamedicaux"><span jhiTranslate="avancementApp.fichemedicale.notesprofitionnelsparamedicaux">Notes profitionnels paramedicaux</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="comptesrendus"><span jhiTranslate="avancementApp.fichemedicale.comptesrendus">Comptes rendus</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="recommandations"><span jhiTranslate="avancementApp.fichemedicale.recommandations">Recommandations</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="perscriptionmedicamenteuses"><span jhiTranslate="avancementApp.fichemedicale.perscriptionmedicamenteuses">Perscriptions medicamenteuses</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="groupesanguin"><span jhiTranslate="avancementApp.fichemedicale.groupesanguin">Groupe sanguin</span> <span class="fa fa-sort"></span></th>
-            <th></th>
+                <th jhiSortBy="nom">Fiche Medicale<span class="fa fa-sort"></span></th>
+
+                <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let fichemedicale of fichemedicales ;trackBy: trackId">
 
-                <td>{{fichemedicale.nom}}</td>
-                <td>{{fichemedicale.prenom}}</td>
-                <td>{{fichemedicale.datenaissance | date:'mediumDate'}}</td>
-                <td>{{fichemedicale.antecedents}}</td>
-                <td>{{fichemedicale.resultatdudernierexamen}}</td>
-                <td>{{fichemedicale.notesprofitionnelsparamedicaux}}</td>
-                <td>{{fichemedicale.comptesrendus}}</td>
-                <td>{{fichemedicale.recommandations}}</td>
-                <td>{{fichemedicale.perscriptionmedicamenteuses}}</td>
-                <td>{{fichemedicale.groupesanguin}}</td>
+            <tr *ngFor="let fichemedicale of  fichemedicales | pureFilter:filter:'nom'">
+
+                <td>Fiche de {{fichemedicale.nom}} {{fichemedicale.prenom}}</td>
+
                 <td class="text-xs-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -72,8 +67,8 @@
             </tbody>
         </table>
     </div>
-        <div class="text-xs-center" *ngIf="fichemedicales && fichemedicales.length">
-            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
-        </div>
+    <div class="text-xs-center" *ngIf="fichemedicales && fichemedicales.length">
+        <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+    </div>
 </div>

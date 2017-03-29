@@ -23,7 +23,12 @@
             "specialite": "Specialite",
             "photo": "Photo",
             "login": "Login",
-            "motdepasse": "Motdepasse"
+            "fullName": "Full Name",
+            "motdepasse": "Motdepasse",
+            "numero": "Numero",
+            "numr": "Numr",
+            "numer": "Numer",
+            "az": "Az"
         }
     }
 }

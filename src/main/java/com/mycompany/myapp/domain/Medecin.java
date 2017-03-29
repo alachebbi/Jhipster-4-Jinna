@@ -44,8 +44,23 @@ public class Medecin implements Serializable {
     @Field("login")
     private String login;
 
+    @Field("full_name")
+    private String fullName;
+
     @Field("motdepasse")
     private String motdepasse;
+
+    @Field("numero")
+    private String numero;
+
+    @Field("numr")
+    private String numr;
+
+    @Field("numer")
+    private String numer;
+
+    @Field("az")
+    private String az;
 
     public String getId() {
         return id;
@@ -159,6 +174,19 @@ public class Medecin implements Serializable {
         this.login = login;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public Medecin fullName(String fullName) {
+        this.fullName = fullName;
+        return this;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getMotdepasse() {
         return motdepasse;
     }
@@ -170,6 +198,58 @@ public class Medecin implements Serializable {
 
     public void setMotdepasse(String motdepasse) {
         this.motdepasse = motdepasse;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public Medecin numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getNumr() {
+        return numr;
+    }
+
+    public Medecin numr(String numr) {
+        this.numr = numr;
+        return this;
+    }
+
+    public void setNumr(String numr) {
+        this.numr = numr;
+    }
+
+    public String getNumer() {
+        return numer;
+    }
+
+    public Medecin numer(String numer) {
+        this.numer = numer;
+        return this;
+    }
+
+    public void setNumer(String numer) {
+        this.numer = numer;
+    }
+
+    public String getAz() {
+        return az;
+    }
+
+    public Medecin az(String az) {
+        this.az = az;
+        return this;
+    }
+
+    public void setAz(String az) {
+        this.az = az;
     }
 
     @Override
@@ -204,7 +284,12 @@ public class Medecin implements Serializable {
             ", photo='" + photo + "'" +
             ", photoContentType='" + photoContentType + "'" +
             ", login='" + login + "'" +
+            ", fullName='" + fullName + "'" +
             ", motdepasse='" + motdepasse + "'" +
+            ", numero='" + numero + "'" +
+            ", numr='" + numr + "'" +
+            ", numer='" + numer + "'" +
+            ", az='" + az + "'" +
             '}';
     }
 }

@@ -16,6 +16,11 @@
                 "medicament": "Medicament",
                 "demandemedicament": "Demandemedicament",
                 "demandemateriel": "Demandemateriel",
+                "hello": "Hello",
+                "fichepatient": "Fichepatient",
+                "doctor": "Doctor",
+                "traitement": "Traitement",
+                "infirmier": "Infirmier",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

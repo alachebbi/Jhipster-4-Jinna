@@ -1,42 +1,43 @@
-
+<div style="margin-left: 30px;">
 <div *ngIf="medecin">
-    <h2><span jhiTranslate="avancementApp.medecin.detail.title">Medecin</span> {{medecin.nom}} {{medecin.prenom}}</h2>
+
+    <div  *ngIf="medecin.photo" >
+        <a (click)="openFile(medecin.photoContentType, medecin.photo)">
+            <img [src]="'data:' + medecin.photoContentType + ';base64,' + medecin.photo" style="max-width: 100px;max-height: 100px;" alt="medecin image"/>
+        </a>
+        <div style="float:right; margin-left:20px;width: 100px;height: 100px;border-radius: 50%;text-align: center;font-size: 18px;background-color: #8c0f15;color:#f8f8f8;line-height: 100px;font-family:Times New Roman;"> Print PDF</div>
+        <div style="float:right; width: 100px;height: 100px;border-radius: 50%;text-align: center;font-size: 18px;background-color: #242b5d;color:#f8f8f8 ;line-height: 100px;font-family:Times New Roman;"> Disscuss </div>
+    </div>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row">
-        <dt><span jhiTranslate="avancementApp.medecin.nom">Nom</span></dt>
+
+        <dt><span style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Nom complet :</span></dt>
         <dd>
-            <span>{{medecin.nom}}</span>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{medecin.nomcomplet}}</span>
         </dd>
-        <dt><span jhiTranslate="avancementApp.medecin.prenom">Prenom</span></dt>
+        <dt><span style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Service Medical :</span></dt>
         <dd>
-            <span>{{medecin.prenom}}</span>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{medecin.serviceid}}</span>
         </dd>
-        <dt>Datenaissance</dt>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Date de naissance :</span></dt>
         <dd>
-            <span>{{medecin.datenaissance | date:'mediumDate'}}</span>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{medecin.datenaissance | date:'mediumDate'}}</span>
         </dd>
 
-        <dt>Specialite</dt>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Specialite : </span></dt>
         <dd>
-            <span>{{medecin.specialite}}</span>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{medecin.specialite}}</span>
         </dd>
-        <dt>Photo</dt>
-        <dd>
-            <div *ngIf="medecin.photo">
-                <a (click)="openFile(medecin.photoContentType, medecin.photo)">
-                    <img [src]="'data:' + medecin.photoContentType + ';base64,' + medecin.photo" style="max-width: 30px;max-height: 50px;" alt="medecin image"/>
-                </a>
 
-            </div>
-        </dd>
-        <dt>Login</dt>
+
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Login : </span></dt>
         <dd>
-            <span>{{medecin.login}}</span>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{medecin.login}}</span>
         </dd>
-        <dt>Mot de passe</dt>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Mot de passe  : </span></dt>
         <dd>
-            <span>{{medecin.motdepasse}}</span>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;font-family:Times New Roman;width: 140px;">{{medecin.motdepasse}}</span>
         </dd>
     </dl>
     <button type="submit"
@@ -51,4 +52,5 @@
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
+</div>
 </div>

@@ -9,6 +9,9 @@ import { AvancementSharedModule, UserRouteAccessService } from './shared';
 import { AvancementAdminModule } from './admin/admin.module';
 import { AvancementAccountModule } from './account/account.module';
 import { AvancementEntityModule } from './entities/entity.module';
+import { AvancementChartModule } from './chart/chart.module';
+import { AvancementChatModule } from './chat/chat.module';
+
 
 import { LayoutRoutingModule } from './layouts';
 import { HomeComponent } from './home';
@@ -34,8 +37,11 @@ import {
         AvancementSharedModule,
         AvancementAdminModule,
         AvancementAccountModule,
-        AvancementEntityModule
+        AvancementEntityModule,
+        AvancementChartModule,
+        AvancementChatModule
     ],
+
     declarations: [
         JhiMainComponent,
         HomeComponent,

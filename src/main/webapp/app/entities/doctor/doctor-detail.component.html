@@ -1,0 +1,57 @@
+<div style="margin-left: 30px;">
+<div *ngIf="doctor">
+    <div  *ngIf="doctor.photo" >
+        <a (click)="openFile(doctor.photoContentType, doctor.photo)">
+            <img [src]="'data:' + doctor.photoContentType + ';base64,' + doctor.photo" style="max-width: 100px;max-height: 100px;" alt="doctor image"/>
+        </a>
+        <div style="float:right; margin-left:20px;width: 100px;height: 100px;border-radius: 50%;text-align: center;font-size: 18px;background-color: #8c0f15;color:#f8f8f8;line-height: 100px;font-family:Times New Roman;"> Print PDF</div>
+        <div style="float:right; width: 100px;height: 100px;border-radius: 50%;text-align: center;font-size: 18px;background-color: #242b5d;color:#f8f8f8 ;line-height: 100px;font-family:Times New Roman;"> Disscuss </div>
+    </div>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt> <span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Nom et prenom :</span> </dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{doctor.nometprenom}}</span>
+        </dd>
+        <dt> <span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Date de naissance :</span> </dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{doctor.daten}}</span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Specialité :</span> </dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{doctor.specialite}}</span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Service medical :</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{doctor.servicemedi}}</span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Mot de passe :</span></dt>
+        <dd>
+            <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{doctor.motdepasse}}</span>
+        </dd>
+        <dt><span  style="float: left;width: 200px;padding-bottom: 30px;font-family:Times New Roman;">Login</span></dt>
+        <dd>
+         <span style="float: left;padding-top:6px;margin-left:500px;display: inline-block;width: 140px;font-family:Times New Roman;">{{doctor.login}}</span>
+        </dd>
+
+
+
+
+
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'doctor/'+ doctor.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+</div>

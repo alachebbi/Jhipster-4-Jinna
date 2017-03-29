@@ -9,6 +9,12 @@ import { AvancementMaterielModule } from './materiel/materiel.module';
 import { AvancementMedicamentModule } from './medicament/medicament.module';
 import { AvancementDemandemedicamentModule } from './demandemedicament/demandemedicament.module';
 import { AvancementDemandematerielModule } from './demandemateriel/demandemateriel.module';
+import { AvancementHelloModule } from './hello/hello.module';
+
+import { AvancementFichepatientModule } from './fichepatient/fichepatient.module';
+import { AvancementDoctorModule } from './doctor/doctor.module';
+import { AvancementTraitementModule } from './traitement/traitement.module';
+import { AvancementInfirmierModule } from './infirmier/infirmier.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -22,6 +28,11 @@ import { AvancementDemandematerielModule } from './demandemateriel/demandemateri
         AvancementMedicamentModule,
         AvancementDemandemedicamentModule,
         AvancementDemandematerielModule,
+        AvancementHelloModule,
+        AvancementFichepatientModule,
+        AvancementDoctorModule,
+        AvancementTraitementModule,
+        AvancementInfirmierModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

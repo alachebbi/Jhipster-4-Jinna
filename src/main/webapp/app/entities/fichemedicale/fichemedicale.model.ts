@@ -11,5 +11,6 @@ export class Fichemedicale {
         public recommandations?: string,
         public perscriptionmedicamenteuses?: string,
         public groupesanguin?: string,
+        public compte?: any,
     ) { }
 }

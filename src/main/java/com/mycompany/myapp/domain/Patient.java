@@ -35,6 +35,12 @@ public class Patient implements Serializable {
     @Field("numsecsociale")
     private Long numsecsociale;
 
+    @Field("dossier")
+    private byte[] dossier;
+
+    @Field("dossier_content_type")
+    private String dossierContentType;
+
     public String getId() {
         return id;
     }
@@ -108,6 +114,32 @@ public class Patient implements Serializable {
         this.numsecsociale = numsecsociale;
     }
 
+    public byte[] getDossier() {
+        return dossier;
+    }
+
+    public Patient dossier(byte[] dossier) {
+        this.dossier = dossier;
+        return this;
+    }
+
+    public void setDossier(byte[] dossier) {
+        this.dossier = dossier;
+    }
+
+    public String getDossierContentType() {
+        return dossierContentType;
+    }
+
+    public Patient dossierContentType(String dossierContentType) {
+        this.dossierContentType = dossierContentType;
+        return this;
+    }
+
+    public void setDossierContentType(String dossierContentType) {
+        this.dossierContentType = dossierContentType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -137,6 +169,8 @@ public class Patient implements Serializable {
             ", cin='" + cin + "'" +
             ", datedenaissance='" + datedenaissance + "'" +
             ", numsecsociale='" + numsecsociale + "'" +
+            ", dossier='" + dossier + "'" +
+            ", dossierContentType='" + dossierContentType + "'" +
             '}';
     }
 }

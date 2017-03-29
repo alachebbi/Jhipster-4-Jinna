@@ -1,0 +1,25 @@
+{
+    "avancementApp": {
+        "hello" : {
+            "home": {
+                "title": "Hellos",
+                "createLabel": "Créer un nouveau Hello",
+                "createOrEditLabel": "Créer ou éditer un Hello",
+                "search": "Recherche pour Hello"
+            },
+            "created": "Un nouveau Hello a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Hello avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Hello avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Hello {{ id }} ?"
+            },
+            "detail": {
+                "title": "Hello"
+            },
+            "name": "Name",
+            "medicamentid": "Medicamentid",
+            "maladie": "Maladie",
+            "symptomes": "Symptomes"
+        }
+    }
+}

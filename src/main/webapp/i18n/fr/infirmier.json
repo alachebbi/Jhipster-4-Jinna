@@ -1,0 +1,26 @@
+{
+    "avancementApp": {
+        "infirmier" : {
+            "home": {
+                "title": "Infirmiers",
+                "createLabel": "Créer un nouveau Infirmier",
+                "createOrEditLabel": "Créer ou éditer un Infirmier",
+                "search": "Recherche pour Infirmier"
+            },
+            "created": "Un nouveau Infirmier a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Infirmier avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Infirmier avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Infirmier {{ id }} ?"
+            },
+            "detail": {
+                "title": "Infirmier"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "age": "Age",
+            "login": "Login",
+            "password": "Password"
+        }
+    }
+}

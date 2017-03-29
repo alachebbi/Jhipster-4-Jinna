@@ -32,7 +32,27 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "fullName",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "motdepasse",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "az",
             "fieldType": "String"
         }
     ],

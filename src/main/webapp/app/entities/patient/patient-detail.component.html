@@ -1,4 +1,4 @@
-
+<div style="margin-left: 30px;">
 <div *ngIf="patient">
     <h2><span jhiTranslate="avancementApp.patient.detail.title">Patient</span> {{patient.id}}</h2>
     <hr>
@@ -24,6 +24,13 @@
         <dd>
             <span>{{patient.numsecsociale}}</span>
         </dd>
+        <dt><span jhiTranslate="avancementApp.patient.dossier">Dossier</span></dt>
+        <dd>
+            <div *ngIf="patient.dossier">
+                <a (click)="openFile(patient.dossierContentType, patient.dossier)" jhiTranslate="entity.action.open">open</a>
+                {{patient.dossierContentType}}, {{byteSize(patient.dossier)}}
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"
@@ -38,4 +45,5 @@
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
+</div>
 </div>

@@ -20,7 +20,8 @@
             "prenom": "Prenom",
             "cin": "Cin",
             "datedenaissance": "Datedenaissance",
-            "numsecsociale": "Numsecsociale"
+            "numsecsociale": "Numsecsociale",
+            "dossier": "Dossier"
         }
     }
 }

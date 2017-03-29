@@ -23,6 +23,7 @@
             <th jhiSortBy="cin"><span jhiTranslate="avancementApp.patient.cin">Cin</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="datedenaissance"><span jhiTranslate="avancementApp.patient.datedenaissance">Datedenaissance</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="numsecsociale"><span jhiTranslate="avancementApp.patient.numsecsociale">Numsecsociale</span> <span class="fa fa-sort"></span></th>
+
             <th></th>
             </tr>
             </thead>
@@ -34,6 +35,10 @@
                 <td>{{patient.cin}}</td>
                 <td>{{patient.datedenaissance | date:'mediumDate'}}</td>
                 <td>{{patient.numsecsociale}}</td>
+                <td>
+                    <a *ngIf="patient.dossier" (click)="openFile(patient.dossierContentType, patient.dossier)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="patient.dossier">{{patient.dossierContentType}}, {{byteSize(patient.dossier)}}</span>
+                </td>
                 <td class="text-xs-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

@@ -1,6 +1,24 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
+.row {width: 750px;
+height: 800px;
+margin-left: 45px;
+text-align: left;}
+.ec{margin: 0;}
+img{
+    border-radius: 50%;
+    float: left;
+    padding: 2em 0;
+}
+.block{
+
+}
+.ex{
+    margin-left: 0px;
+    float:left;
+}
+
 
 .hipster {
     display: inline-block;
@@ -8,8 +26,30 @@ Main page styles
     height: 497px;
     background: url("../../content/images/med.png") no-repeat center top;
     background-size: contain;
+    float:right;
 }
-.lead{color : #014c8c;}
+.lead{color : #014c8c;
+    padding-left: 270px;
+}
+.btn-info {
+    float:right;
+    color: #fff;
+    background-color: #242b5d;
+    border-color: #242b5d;
+}
+.logeed{
+    margin-top: 0;
+    background-color: #8c0f15;
+    height:30px ;
+    weight:100%;
+
+}
+.pdf{
+    background: url("../../content/images/pdf.png") no-repeat center center;
+    float:right; margin-left:20px;width: 100px;height: 100px;border-radius: 50%;}
+.chat{
+    background: url("../../content/images/chat.jpg") no-repeat center center;
+    float:right; margin-left:20px;width: 100px;height: 100px;border-radius: 50%;}
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
 @media
@@ -24,11 +64,42 @@ only screen and (                min-resolution: 2dppx) {
         background-size: contain;
     }
 }
-p {padding-top: 30px;
-    padding-left: 374px}
+.lead p{
+    padding-top: 20px;
+    padding-left: 100px;
+}
+.leadd
+{color : #014c8c;
+   float: right;
+}
+
+p {
+    padding-left: 30px;
+}
+
+h1 {padding-top: 40px;
+    padding-left: 50px}
 h3, h4 {
-    padding-left: 260px;
+    padding-left: 0px;
     font-family:  "Arial Black" ;
     color :  #8c0f15   ;
     padding-top: 30px;
+    padding-bottom: 30px;
+}
+.fr{
+    height: 30px;
+    width: 30px;
+    padding: 2em 0;
+    background: url("../../content/images/fr.jpg") no-repeat center center;
+    background-size: contain;
+    float: left;
+
+}
+.en{float: left;
+margin-right: 10px;
+    height: 30px;
+    width: 30px;
+padding: 2em 0;
+    background: url("../../content/images/ang.jpg") no-repeat center center;
+    background-size: contain;
 }

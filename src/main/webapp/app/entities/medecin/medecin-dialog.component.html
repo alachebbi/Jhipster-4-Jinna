@@ -11,17 +11,12 @@
         <jhi-alert-error></jhi-alert-error>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="avancementApp.medecin.nom" for="field_nom">Nom</label>
-            <input type="text" class="form-control" name="nom" id="field_nom"
-                   [(ngModel)]="medecin.nom"
+            <label class="form-control-label" jhiTranslate="avancementApp.medecin.numer" for="field_az">az</label>
+            <input type="text" class="form-control" name="az" id="field_az"
+                   [(ngModel)]="medecin.az"
             />
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="avancementApp.medecin.prenom" for="field_prenom">Prenom</label>
-            <input type="text" class="form-control" name="prenom" id="field_prenom"
-                   [(ngModel)]="medecin.prenom"
-            />
-        </div>
+
         <div class="form-group">
             <label>Service Medical</label>
             <select class="form-control" name="servicemedical" [(ngModel)]="medecin.serviceid">

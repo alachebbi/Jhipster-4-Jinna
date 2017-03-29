@@ -1,0 +1,42 @@
+<div style="margin-left: 30px;">
+<div *ngIf="traitement">
+    <h2><span jhiTranslate="avancementApp.traitement.detail.title">Traitement</span> {{traitement.maladie}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="avancementApp.traitement.maladie">Maladie</span></dt>
+        <dd>
+            <span>{{traitement.maladie}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.traitement.symptomes">Symptomes</span></dt>
+        <dd>
+            <span>{{traitement.symptomes}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.traitement.medicamentid">Medicamentid</span></dt>
+        <dd>
+            <span>{{traitement.medicamentid}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.traitement.duree">Duree</span></dt>
+        <dd>
+            <span>{{traitement.duree}}</span>
+        </dd>
+        <dt><span jhiTranslate="avancementApp.traitement.fois">Fois</span></dt>
+        <dd>
+            <span>{{traitement.fois}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'traitement/'+ traitement.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+</div>

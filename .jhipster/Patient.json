@@ -21,6 +21,11 @@
         {
             "fieldName": "numsecsociale",
             "fieldType": "Long"
+        },
+        {
+            "fieldName": "dossier",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
         }
     ],
     "dto": "no",

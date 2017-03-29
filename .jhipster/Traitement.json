@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "maladie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "symptomes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "medicamentid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "duree",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fois",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "traitement",
+    "pagination": "no"
+}

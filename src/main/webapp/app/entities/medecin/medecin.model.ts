@@ -8,6 +8,11 @@ export class Medecin {
         public specialite?: string,
         public photo?: any,
         public login?: string,
+        public fullName?: string,
         public motdepasse?: string,
+        public numero?: string,
+        public numr?: string,
+        public numer?: string,
+        public az?: string,
     ) { }
 }

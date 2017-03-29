@@ -48,6 +48,25 @@
                 [(ngModel)]="patient.numsecsociale"
              />
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avancementApp.patient.dossier" for="field_dossier">Dossier</label>
+            <div>
+                <div *ngIf="patient.dossier" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(patient.dossierContentType, patient.dossier)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{patient.dossierContentType}}, {{byteSize(patient.dossier)}}</span>
+                    <button type="button" (click)="patient.dossier=null;patient.dossierContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, patient, 'dossier', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="dossier" id="field_dossier"
+                [(ngModel)]="patient.dossier"
+             />
+            <input type="hidden" class="form-control" name="dossierContentType" id="field_dossierContentType"
+                [(ngModel)]="patient.dossierContentType" />
+        </div>
 
     </div>
     <div class="modal-footer">

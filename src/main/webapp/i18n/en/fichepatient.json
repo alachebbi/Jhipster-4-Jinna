@@ -1,0 +1,32 @@
+{
+    "avancementApp": {
+        "fichepatient" : {
+            "home": {
+                "title": "Fichepatients",
+                "createLabel": "Create a new Fichepatient",
+                "createOrEditLabel": "Create or edit a Fichepatient",
+                "search": "Search for Fichepatient"
+            },
+            "created": "A new Fichepatient is created with identifier {{ param }}",
+            "updated": "A Fichepatient is updated with identifier {{ param }}",
+            "deleted": "A Fichepatient is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Fichepatient {{ id }}?"
+            },
+            "detail": {
+                "title": "Fichepatient"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "medid": "Medid",
+            "datedenaissance": "Datedenaissance",
+            "antecedents": "Antecedents",
+            "resultatdudernierexamen": "Resultatdudernierexamen",
+            "notesprofitionnelparamedicaux": "Notesprofitionnelparamedicaux",
+            "compterendu": "Compterendu",
+            "recommandations": "Recommandations",
+            "perscriptionmedicamenteuses": "Perscriptionmedicamenteuses",
+            "groupesanguin": "Groupesanguin"
+        }
+    }
+}

@@ -1,0 +1,69 @@
+<div>
+    <h2><span jhiTranslate="avancementApp.infirmier.home.title">Infirmiers</span>
+        <button class="btn btn-primary float-xs-right create-infirmier" [routerLink]="['/', { outlets: { popup: ['infirmier-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avancementApp.infirmier.home.createLabel">
+            Create new Infirmier
+            </span>
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="infirmiers">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nom"><span jhiTranslate="avancementApp.infirmier.nom">Nom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="prenom"><span jhiTranslate="avancementApp.infirmier.prenom">Prenom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="age"><span jhiTranslate="avancementApp.infirmier.age">Age</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="login"><span jhiTranslate="avancementApp.infirmier.login">Login</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="password"><span jhiTranslate="avancementApp.infirmier.password">Password</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let infirmier of infirmiers ;trackBy: trackId">
+                <td><a [routerLink]="['../infirmier', infirmier.id ]">{{infirmier.id}}</a></td>
+                <td>{{infirmier.nom}}</td>
+                <td>{{infirmier.prenom}}</td>
+                <td>{{infirmier.age}}</td>
+                <td>{{infirmier.login}}</td>
+                <td>{{infirmier.password}}</td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../infirmier', infirmier.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'infirmier/'+ infirmier.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'infirmier/'+ infirmier.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="infirmiers && infirmiers.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>

@@ -3,6 +3,8 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Medecin;
 
+import com.mycompany.myapp.domain.Medecin;
+
 import com.mycompany.myapp.repository.MedecinRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
@@ -16,6 +18,21 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.dynamicreports.report.builder.DynamicReports;
+import net.sf.dynamicreports.report.builder.column.Columns;
+import net.sf.dynamicreports.report.builder.component.Components;
+import net.sf.dynamicreports.report.builder.datatype.DataTypes;
+import net.sf.dynamicreports.report.builder.style.StyleBuilder;
+import net.sf.dynamicreports.report.constant.HorizontalAlignment;
+import net.sf.dynamicreports.report.exception.DRException;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.awt.Color;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,7 +49,7 @@ public class MedecinResource {
     private final Logger log = LoggerFactory.getLogger(MedecinResource.class);
 
     private static final String ENTITY_NAME = "medecin";
-        
+
     private final MedecinRepository medecinRepository;
 
     public MedecinResource(MedecinRepository medecinRepository) {
@@ -58,6 +75,9 @@ public class MedecinResource {
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
+
+
+
 
     /**
      * PUT  /medecins : Updates an existing medecin.
@@ -88,6 +108,8 @@ public class MedecinResource {
      * @return the ResponseEntity with status 200 (OK) and the list of medecins in body
      * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
+
+
     @GetMapping("/medecins")
     @Timed
     public ResponseEntity<List<Medecin>> getAllMedecins(@ApiParam Pageable pageable)

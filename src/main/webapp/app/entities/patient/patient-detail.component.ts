@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { JhiLanguageService } from 'ng-jhipster';
+import { JhiLanguageService, DataUtils } from 'ng-jhipster';
 import { Patient } from './patient.model';
 import { PatientService } from './patient.service';
 
@@ -15,6 +15,7 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
 
     constructor(
         private jhiLanguageService: JhiLanguageService,
+        private dataUtils: DataUtils,
         private patientService: PatientService,
         private route: ActivatedRoute
     ) {
@@ -31,6 +32,13 @@ export class PatientDetailComponent implements OnInit, OnDestroy {
         this.patientService.find(id).subscribe(patient => {
             this.patient = patient;
         });
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
     }
     previousState() {
         window.history.back();

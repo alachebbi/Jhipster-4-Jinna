@@ -50,6 +50,12 @@ public class Fichemedicale implements Serializable {
     @Field("groupesanguin")
     private String groupesanguin;
 
+    @Field("compte")
+    private byte[] compte;
+
+    @Field("compte_content_type")
+    private String compteContentType;
+
     public String getId() {
         return id;
     }
@@ -188,6 +194,32 @@ public class Fichemedicale implements Serializable {
         this.groupesanguin = groupesanguin;
     }
 
+    public byte[] getCompte() {
+        return compte;
+    }
+
+    public Fichemedicale compte(byte[] compte) {
+        this.compte = compte;
+        return this;
+    }
+
+    public void setCompte(byte[] compte) {
+        this.compte = compte;
+    }
+
+    public String getCompteContentType() {
+        return compteContentType;
+    }
+
+    public Fichemedicale compteContentType(String compteContentType) {
+        this.compteContentType = compteContentType;
+        return this;
+    }
+
+    public void setCompteContentType(String compteContentType) {
+        this.compteContentType = compteContentType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -222,6 +254,8 @@ public class Fichemedicale implements Serializable {
             ", recommandations='" + recommandations + "'" +
             ", perscriptionmedicamenteuses='" + perscriptionmedicamenteuses + "'" +
             ", groupesanguin='" + groupesanguin + "'" +
+            ", compte='" + compte + "'" +
+            ", compteContentType='" + compteContentType + "'" +
             '}';
     }
 }
